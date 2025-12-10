@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Односоставные предложения: Теория и Практика</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@700&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Новая, более строгая и стильная палитра */
+            --bg-body: #f0f2f5;
+            --bg-container: #ffffff;
+            --primary-color: #005b70; /* Глубокий бирюзовый */
+            --accent-color: #d4af37; /* Благородный золотой */
+            --text-main: #333333;
+            --text-light: #666666;
+            --block-bg: #f4f7f6; /* Светлый фон для блоков */
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .presentation-container {
+            width: 90%;
+            max-width: 950px;
+            height: 85vh;
+            background: var(--bg-container);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            border-top: 8px solid var(--primary-color);
+        }
+
+        /* Прогресс-бар */
+        .progress-container {
+            width: 100%;
+            height: 6px;
+            background-color: #e0e0e0;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 10;
+        }
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+            width: 0%;
+            transition: width 0.5s ease-in-out;
+        }
+
+        .slide {
+            flex: 1;
+            padding: 40px 70px;
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            overflow-y: auto;
+            animation: fadeIn 0.6s ease-out;
+        }
+
+        .slide.active {
+            display: flex;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3.5em;
+            color: var(--primary-color);
+            text-align: center;
+            margin-bottom: 10px;
+            letter-spacing: -1px;
+        }
+
+        h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.2em;
+            color: var(--primary-color);
+            border-bottom: 3px solid var(--accent-color);
+            padding-bottom: 15px;
+            margin-top: 0;
+            position: relative;
+        }
+        
+        /* Декоративный элемент для заголовка H2 */
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--primary-color);
+        }
+
+        p, li {
+            font-size: 1.15em;
+            line-height: 1.6;
+            color: var(--text-main);
+        }
+
+        /* Цитата */
+        .quote-box {
+            position: relative;
+            padding: 30px;
+            margin: 20px auto;
+            background: #fff;
+            border-left: 4px solid var(--accent-color);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5em;
+            font-style: italic;
+            color: var(--primary-color);
+            max-width: 85%;
+        }
+        .quote-box::before {
+            content: '“';
+            font-size: 4em;
+            position: absolute;
+            top: -10px;
+            left: 10px;
+            color: var(--accent-color);
+            opacity: 0.3;
+        }
+
+        /* Блок определения */
+        .definition-block {
+            background: var(--block-bg);
+            padding: 25px;
+            border-radius: 12px;
+            border-left: 6px solid var(--primary-color);
+            margin: 25px 0;
+        }
+        .definition-block strong {
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        /* Блок примеров */
+        .example-block {
+            margin-top: 20px;
+            padding-left: 20px;
+            border-left: 3px dotted var(--accent-color);
+        }
+        .example-block p {
+            margin: 10px 0;
+            font-style: italic;
+            color: var(--text-light);
+        }
+        .example-block strong {
+            color: var(--text-main);
+            font-style: normal;
+        }
+
+        /* Интерактивные упражнения */
+        .exercise-area {
+            margin-top: 30px;
+        }
+        details {
+            background: #ffffff;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 15px 20px;
+            margin-bottom: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        details:hover {
+            border-color: var(--primary-color);
+            box-shadow: 0 5px 15px rgba(0,91,112, 0.1);
+        }
+        details[open] {
+            border-color: var(--accent-color);
+            background: #fffcf5;
+        }
+        summary {
+            font-weight: 600;
+            font-size: 1.1em;
+            color: var(--primary-color);
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        summary::after {
+            content: '+';
+            font-size: 1.5em;
+            color: var(--accent-color);
+            font-weight: 300;
+        }
+        details[open] summary::after {
+            content: '−';
+        }
+        .answer {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #eee;
+            color: var(--text-main);
+            font-size: 1.1em;
+            animation: fadeIn 0.4s;
+        }
+        .answer strong {
+            color: var(--primary-color);
+        }
+
+        /* Панель управления */
+        .controls {
+            height: 80px;
+            background: #ffffff;
+            border-top: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 50px;
+        }
+
+        button {
+            background: transparent;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+            padding: 12px 30px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 1em;
+            font-weight: 600;
+            font-family: 'Montserrat', sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        button:hover:not(:disabled) {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        button:disabled {
+            border-color: #ccc;
+            color: #ccc;
+            cursor: not-allowed;
+        }
+
+        #slideCounter {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: bold;
+            color: var(--text-light);
+            font-size: 1.3em;
+        }
+
+        /* Таблица */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            font-size: 1em;
+        }
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+        th {
+            color: var(--primary-color);
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2em;
+        }
+    </style>
+</head>
+<body>
+
+<div class="presentation-container">
+    <div class="progress-container">
+        <div class="progress-bar" id="progressBar"></div>
+    </div>
+
+    <div class="slide active" style="text-align: center;">
+        <div style="flex: 1; display: flex; flex-direction: column; justify-content: center;">
+            <h1>Односоставные предложения</h1>
+            <p style="font-family: 'Cormorant Garamond', serif; font-size: 1.8em; color: var(--accent-color); margin-top: -10px;">Теория и практика</p>
+            <p style="margin-top: 30px; color: var(--text-light);">По материалам учебника «Мы — узбекистанцы»</p>
+            
+            <div style="margin-top: 50px; display: inline-flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
+                <span style="padding: 10px 20px; background: var(--block-bg); border-radius: 30px; color: var(--primary-color); font-weight: 600;">Определённо-личные</span>
+                <span style="padding: 10px 20px; background: var(--block-bg); border-radius: 30px; color: var(--primary-color); font-weight: 600;">Неопределённо-личные</span>
+                <span style="padding: 10px 20px; background: var(--block-bg); border-radius: 30px; color: var(--primary-color); font-weight: 600;">Обобщённо-личные</span>
+                <span style="padding: 10px 20px; background: var(--block-bg); border-radius: 30px; color: var(--primary-color); font-weight: 600;">Безличные</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="slide">
+        <h2>Введение: Всё начинается с любви</h2>
+        <p>Язык отражает нашу жизнь, культуру и ценности. В русском языке существуют особые предложения, где есть <strong>только один</strong> главный член, что позволяет выражать мысли кратко и ёмко.</p>
+        <div class="quote-box">
+            «Патриот не спрашивает, что сделала страна для него. Он спрашивает себя, что он может сделать для страны?»
+        </div>
+        <p style="text-align: right; color: var(--text-light); margin-top: -10px;">(Из упр. 17, Абдулла Арипов)</p>
+        <p>Давайте изучим эти виды предложений и закрепим знания на практике.</p>
+    </div>
+
+    <div class="slide">
+        <h2>1. Определённо-личные предложения</h2>
+        <div class="definition-block">
+            Деятель не назван, но форма глагола точно указывает на него. Это глаголы <strong>1-го или 2-го лица</strong> (настоящего/будущего времени или повелительного наклонения).
+        </div>
+        <p>Мы легко можем подставить местоимения: <strong>Я, МЫ, ТЫ, ВЫ</strong>.</p>
+        <div class="example-block">
+            <p><strong>Слушаю</strong> музыку. (Я)</p>
+            <p><strong>Хочешь</strong> тоже послушать? (Ты)</p>
+            <p><strong>Люблю</strong> грозу в начале мая... (Я — Ф. Тютчев)</p>
+        </div>
+    </div>
+
+    <div class="slide">
+        <h2>Практикум: Упражнение 19</h2>
+        <p>Найдите глаголы-сказуемые и определите их лицо и число. Нажмите, чтобы проверить себя.</p>
+        <div class="exercise-area">
+            <details>
+                <summary>1. Давайте восклицать, друг другом восхищаться...</summary>
+                <div class="answer">Глаголы: <strong>Давайте восклицать, восхищаться</strong>.<br>Форма: Повелительное наклонение (мы). Указывает на совместное действие.</div>
+            </details>
+            <details>
+                <summary>2. Идёшь, на меня похожий...</summary>
+                <div class="answer">Глагол: <strong>Идёшь</strong>.<br>Форма: 2-е лицо, единственное число, настоящее время (ты).</div>
+            </details>
+            <details>
+                <summary>3. Чему смеётесь? Над собой смеётесь!</summary>
+                <div class="answer">Глагол: <strong>Смеётесь</strong>.<br>Форма: 2-е лицо, множественное число, настоящее время (вы).</div>
+            </details>
+        </div>
+    </div>
+
+    <div class="slide">
+        <h2>2. Неопределённо-личные предложения</h2>
+        <div class="definition-block">
+            Важно само <strong>действие</strong>, а не тот, кто его совершает. Деятель мыслится неопределенно (как «какие-то люди»).
+        </div>
+        <p>Сказуемое стоит в форме <strong>3-го лица множественного числа</strong> (ОНИ) настоящего/будущего времени или во множественном числе прошедшего времени.</p>
+        <div class="example-block">
+            <p>Дни поздней осени <strong>бранят</strong> обыкновенно. (Кто-то бранит)</p>
+            <p>По улицам слона <strong>водили</strong>. (Кто-то водил)</p>
+            <p>Вешали шары, устанавливали ёлку.</p>
+        </div>
+    </div>
+
+    <div class="slide">
+        <h2>Практикум: Упражнение 20</h2>
+        <p>Определите, в какой форме употреблены глаголы-сказуемые.</p>
+        <div class="exercise-area">
+            <details>
+                <summary>1. Нашему классу поручили подготовить зал.</summary>
+                <div class="answer">Глагол <strong>«поручили»</strong> — в форме множественного числа прошедшего времени.</div>
+            </details>
+            <details>
+                <summary>2. В школу собираются пригласить известных музыкантов.</summary>
+                <div class="answer">Глагол <strong>«собираются»</strong> — в форме 3-го лица множественного числа настоящего времени.</div>
+            </details>
+            <details>
+                <summary>3. Праздник проведут по сценарию.</summary>
+                <div class="answer">Глагол <strong>«проведут»</strong> — в форме 3-го лица множественного числа будущего времени.</div>
+            </details>
+        </div>
+    </div>
+
+    <div class="slide">
+        <h2>3. Обобщённо-личные предложения</h2>
+        <div class="definition-block">
+            Действие имеет отношение <strong>к любому лицу, ко всем</strong>. Чаще всего это пословицы, поговорки или описание традиций (народная мудрость).
+        </div>
+        <div class="example-block">
+            <p><strong>Век живи — век учись.</strong> (Значение: В течение всей жизни человек должен учиться).</p>
+            <p><strong>Что посеешь, то и пожнёшь.</strong> (Значение: Как сам поступишь, так и с тобой поступят).</p>
+            <p>Важно уважать наследие предков. (О традициях, например, «Бешик той»)</p>
+        </div>
+    </div>
+
+    <div class="slide">
+        <h2>4. Безличные предложения</h2>
+        <div class="definition-block">
+             В этих предложениях нет и <strong>не может быть подлежащего</strong>. Действие происходит само по себе, независимо от деятеля.
+        </div>
+        <p>Часто обозначают состояние природы или человека. Сказуемое может быть выражено безличным глаголом или словами категории состояния (холодно, скучно, жаль, пора, надо).</p>
+        <div class="example-block">
+            <p>Вдруг <strong>стало холодно</strong>.</p>
+            <p>Мне <strong>хочется спать</strong>.</p>
+            <p>Детям <strong>весело</strong>. Здесь <strong>нельзя бегать</strong>.</p>
+        </div>
+    </div>
+
+    <div class="slide">
+        <h2>Практикум: Упражнение 23</h2>
+        <p>Замените двусоставные предложения односоставными безличными. Как изменился смысл?</p>
+        <div class="exercise-area">
+            <details>
+                <summary>1. Наступает вечер. (Двусоставное)</summary>
+                <div class="answer">→ <strong>Вечереет.</strong> (Безличное)</div>
+            </details>
+            <details>
+                <summary>2. Я всю ночь не спал.</summary>
+                <div class="answer">→ <strong>Мне всю ночь не спалось.</strong> (Акцент на состояние, не зависящее от воли).</div>
+            </details>
+            <details>
+                <summary>3. Друг заболел.</summary>
+                <div class="answer">→ <strong>Другу нездоровится.</strong></div>
+            </details>
+        </div>
+    </div>
+
+    <div class="slide">
+        <h2>Итоговое закрепление (Упр. 24)</h2>
+        <p>Соотнесите предложения и их характеристики.</p>
+        <div style="width: 100%; overflow-y: auto;">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Предложение</th>
+                        <th>Тип предложения</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Это моя махалля!</td>
+                        <td><strong>Назывное</strong> (Есть только подлежащее)</td>
+                    </tr>
+                    <tr>
+                        <td>Семь раз отмерь — один раз отрежь.</td>
+                        <td><strong>Обобщённо-личное</strong> (Пословица)</td>
+                    </tr>
+                    <tr>
+                        <td>Весной становится светлее.</td>
+                        <td><strong>Безличное</strong> (Состояние природы)</td>
+                    </tr>
+                    <tr>
+                        <td>По праздникам устраивают чаепитие.</td>
+                        <td><strong>Неопределённо-личное</strong> (Кто-то устраивает, 3-е лицо мн.ч.)</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="controls">
+        <button id="prevBtn" onclick="changeSlide(-1)" disabled>← Назад</button>
+        <span id="slideCounter">1 / 10</span>
+        <button id="nextBtn" onclick="changeSlide(1)">Вперёд →</button>
+    </div>
+</div>
+
+<script>
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.slide');
+    const progressBar = document.getElementById('progressBar');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const slideCounter = document.getElementById('slideCounter');
+
+    function updateUI() {
+        slides.forEach((slide, index) => {
+            slide.classList.remove('active');
+            if (index === currentSlide) {
+                slide.classList.add('active');
+            }
+        });
+
+        prevBtn.disabled = currentSlide === 0;
+        nextBtn.disabled = currentSlide === slides.length - 1;
+        
+        slideCounter.innerText = `${currentSlide + 1} / ${slides.length}`;
+
+        const progress = ((currentSlide + 1) / slides.length) * 100;
+        progressBar.style.width = `${progress}%`;
+    }
+
+    function changeSlide(direction) {
+        currentSlide += direction;
+        if (currentSlide < 0) currentSlide = 0;
+        if (currentSlide >= slides.length) currentSlide = slides.length - 1;
+        updateUI();
+    }
+
+    updateUI();
+</script>
+
+</body>
+</html>

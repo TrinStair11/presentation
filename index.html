@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Фонетика: Оглушение, Озвончение и Буквы</title>
+    <title>Фонетика: Полный Курс</title>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -31,7 +31,7 @@
             perspective: 1200px;
         }
 
-        /* --- ФОН --- */
+        /* --- ФОН: Летающие частицы --- */
         .space-dust { position: absolute; width: 100%; height: 100%; z-index: -1; overflow: hidden; }
         .particle {
             position: absolute; border-radius: 50%; background: rgba(255,255,255,0.6);
@@ -73,7 +73,7 @@
 
         .slide.active { opacity: 1; transform: scale(1) translateY(0); pointer-events: all; z-index: 10; }
 
-        /* --- ТРАНСКРИПЦИЯ --- */
+        /* --- СТИЛИ ДЛЯ ТРАНСКРИПЦИИ --- */
         .transcription {
             font-family: 'Courier New', monospace;
             background: #ffffff;
@@ -107,14 +107,14 @@
 
         /* --- ТЕКСТ --- */
         h1 {
-            font-size: 3.5rem; margin: 10px 0 20px 0; font-weight: 900; text-align: center;
+            font-size: 4rem; margin: 10px 0 20px 0; font-weight: 900; text-align: center;
             background: linear-gradient(to right, #6c5ce7, #a29bfe);
             -webkit-background-clip: text; -webkit-text-fill-color: transparent;
             text-transform: uppercase; letter-spacing: 2px;
             filter: drop-shadow(0 2px 0 rgba(255,255,255,0.5));
         }
         h2 {
-            font-size: 2.5rem; color: #2d3436; margin-bottom: 10px;
+            font-size: 2.8rem; color: #2d3436; margin-bottom: 10px;
             font-weight: 800; text-align: center;
         }
         .instruction-text {
@@ -126,6 +126,9 @@
 
         p, li, .word-task { font-size: 1.6rem; line-height: 1.5; font-weight: 700; color: #2d3436; }
         ul { list-style: none; padding: 0; }
+
+        .large-text { font-size: 1.8rem; line-height: 1.6; }
+        .large-text b { font-size: 1.9rem; color: #2d3436; }
 
         /* --- КАРТОЧКИ --- */
         .rule-card {
@@ -140,20 +143,8 @@
         .rule-card.weak-2 { border-left: 12px solid var(--neon-yellow); }
         .rule-card.special { border-left: 12px solid var(--neon-purple); }
 
-        /* Стиль для увеличенного текста в правилах */
-        .large-text {
-            font-size: 1.8rem; /* Увеличенный шрифт */
-            line-height: 1.6;
-        }
-        .large-text b {
-            font-size: 1.9rem; /* Жирный текст чуть крупнее */
-            color: #2d3436;
-        }
-
         /* --- БЛОКИ БУКВ --- */
-        .letters-grid {
-            display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 15px; width: 100%; margin-top: 20px;
-        }
+        .letters-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 15px; width: 100%; margin-top: 20px; }
         .letter-box {
             background: white; border-radius: 20px; padding: 15px; text-align: center;
             border: 3px solid #dfe6e9; box-shadow: 0 5px 10px rgba(0,0,0,0.05);
@@ -170,9 +161,7 @@
             justify-content: space-between; border: 3px solid #f1f2f6; transition: 0.3s;
             position: relative; overflow: hidden;
         }
-        .task-row::before {
-            content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 12px; background: #dfe6e9;
-        }
+        .task-row::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 12px; background: #dfe6e9; }
         .task-row:hover::before { background: var(--neon-blue); }
         .task-row:hover { border-color: var(--neon-blue); transform: scale(1.02); }
         
@@ -254,11 +243,40 @@
 <div class="slider-container">
 
     <div class="slide active" style="justify-content: center;">
-        <div style="background: white; color: #6c5ce7; padding: 8px 25px; border-radius: 50px; font-weight: 900; margin-bottom: 20px;">Жизненные навыки • Стр. 102-103</div>
+        <div style="background: white; color: #6c5ce7; padding: 8px 25px; border-radius: 50px; font-weight: 900; margin-bottom: 20px;">РУССКИЙ ЯЗЫК • 5 КЛАСС</div>
         <div class="mascot-container">📚</div>
         <h1>ЗВУКОВОЕ ЗНАЧЕНИЕ</h1>
         <p style="font-size: 2rem; text-align: center; color: #636e72;">Оглушение, Озвончение и Буквы</p>
         <button class="start-btn" onclick="changeSlide(1)">Начать урок 🚀</button>
+    </div>
+
+    <div class="slide">
+        <h2>Сильная позиция 💪</h2>
+        <p style="font-size: 1.8rem; margin-bottom: 30px; text-align: center;">Звук в полной силе — его слышно <br>четко и ясно!</p>
+
+        <div style="width: 100%; max-width: 900px;">
+            <div class="rule-card strong">
+                <div class="emoji-capsule"><span>🦊</span></div>
+                <div>
+                    <b>Перед гласными:</b><br>
+                    <i>Л<b>и</b>са, Д<b>о</b>м</i>
+                </div>
+            </div>
+            <div class="rule-card strong">
+                <div class="emoji-capsule"><span>🍋</span></div>
+                <div>
+                    <b>Перед сонорными (Л, М, Н, Р):</b><br>
+                    <i>С<b>л</b>ово, К<b>р</b>ан</i>
+                </div>
+            </div>
+            <div class="rule-card strong">
+                <div class="emoji-capsule"><span>🚪</span></div>
+                <div>
+                    <b>Перед буквой В:</b><br>
+                    <i>Д<b>в</b>ерь, Т<b>в</b>орчество</i>
+                </div>
+            </div>
+        </div>
     </div>
 
     <div class="slide">
@@ -271,7 +289,7 @@
                 <div class="large-text">
                     <b>Оглушение</b> — замена звонкого на глухой.<br>
                     <i>Если стоит в конце слова или перед глухим.</i><br>
-                    <span style="font-size: 1.5rem; color: #555;">Примеры:</span> Враг <span class="transcription">[к]</span>, Резкий <span class="transcription">[с]</span>
+                    Примеры: Враг <span class="transcription">[к]</span>, Резкий <span class="transcription">[с]</span>
                 </div>
             </div>
             
@@ -280,52 +298,127 @@
                 <div class="large-text">
                     <b>Озвончение</b> — замена глухого на звонкий.<br>
                     <i>Перед звонким (кроме Л, М, Н, Р, В, Й).</i><br>
-                    <span style="font-size: 1.5rem; color: #555;">Примеры:</span> Просьба <span class="transcription">[з']</span>, Сдать <span class="transcription">[з]</span>
+                    Примеры: Просьба <span class="transcription">[з']</span>, Сдать <span class="transcription">[з]</span>
                 </div>
             </div>
         </div>
     </div>
 
     <div class="slide">
-        <div class="level-badge" style="background: #00b894;">Задание 28</div>
-        <h2>Проверь себя!</h2>
-        <div class="instruction-text">👇 Как звучат эти слова из учебника?</div>
+        <div class="level-badge" style="background: #00b894;">Уровень 1</div>
+        <h2>Оглушение</h2>
+        <div class="instruction-text">👇 Прочитай слово и нажми кнопку, чтобы проверить звук!</div>
 
         <div class="task-container">
             <div style="width:100%;">
                 <div class="task-row" style="border-left: 12px solid #00b894;">
-                    <span class="word-task">1. Кни<b>ж</b>ка (перед К)</span>
+                    <span class="word-task">1. Са<b>д</b> (конец)</span>
                     <button class="check-btn" onclick="toggleAnswer(this, 'lvl1-1')">Проверить</button>
                 </div>
                 <div id="lvl1-1" class="answer-box" style="border-color: #00b894; background: #e0f2f1;">
-                    Оглушение: слышим <b>[ш]</b>.
+                    Звук [Т]. На конце слова звонкие оглушаются.
                 </div>
             </div>
             <div style="width:100%;">
                 <div class="task-row" style="border-left: 12px solid #00b894;">
-                    <span class="word-task">2. Ду<b>б</b> (конец слова)</span>
+                    <span class="word-task">2. Кру<b>ж</b>ка</span>
                     <button class="check-btn" onclick="toggleAnswer(this, 'lvl1-2')">Проверить</button>
                 </div>
                 <div id="lvl1-2" class="answer-box" style="border-color: #00b894; background: #e0f2f1;">
-                    Оглушение: слышим <b>[п]</b>.
+                    Звук [Ш]. Потому что 'К' — глухой.
+                </div>
+            </div>
+            <div style="width:100%;">
+                <div class="task-row" style="border-left: 12px solid #00b894;">
+                    <span class="word-task">3. Морко<b>в</b>ка</span>
+                    <button class="check-btn" onclick="toggleAnswer(this, 'lvl1-3')">Проверить</button>
+                </div>
+                <div id="lvl1-3" class="answer-box" style="border-color: #00b894; background: #e0f2f1;">
+                    Звук [Ф]. Перед глухим 'К'.
+                </div>
+            </div>
+            <div style="width:100%;">
+                <div class="task-row" style="border-left: 12px solid #00b894;">
+                    <span class="word-task">4. Всё (перед С)</span>
+                    <button class="check-btn" onclick="toggleAnswer(this, 'lvl1-4')">Проверить</button>
+                </div>
+                <div id="lvl1-4" class="answer-box" style="border-color: #00b894; background: #e0f2f1;">
+                    Звук [Ф]. Перед глухим 'С' буква В оглушается.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="slide">
+        <div class="level-badge" style="background: #fdcb6e; color: #d35400;">Уровень 2</div>
+        <h2>Озвончение</h2>
+        <div class="instruction-text">👇 Какой звук слышится? Нажми кнопку!</div>
+
+        <div class="task-container">
+            <div style="width:100%;">
+                <div class="task-row" style="border-left: 12px solid #fdcb6e;">
+                    <span class="word-task">1. Про<b>с</b>ьба</span>
+                    <button class="check-btn" onclick="toggleAnswer(this, 'lvl2-1')">Проверить</button>
+                </div>
+                <div id="lvl2-1" class="answer-box" style="border-color: #fdcb6e; background: #fff8e1;">
+                    Слышим [З']. Потому что 'Б' — звонкий.
                 </div>
             </div>
             <div style="width:100%;">
                 <div class="task-row" style="border-left: 12px solid #fdcb6e;">
-                    <span class="word-task">3. Во<b>к</b>зал (перед З)</span>
-                    <button class="check-btn" onclick="toggleAnswer(this, 'lvl1-3')">Проверить</button>
+                    <span class="word-task">2. Во<b>к</b>зал</span>
+                    <button class="check-btn" onclick="toggleAnswer(this, 'lvl2-2')">Проверить</button>
                 </div>
-                <div id="lvl1-3" class="answer-box" style="border-color: #fdcb6e; background: #fff8e1;">
-                    Озвончение: слышим <b>[г]</b>.
+                <div id="lvl2-2" class="answer-box" style="border-color: #fdcb6e; background: #fff8e1;">
+                    Слышим [Г]. Буква 'З' озвончает соседа!
                 </div>
             </div>
-             <div style="width:100%;">
+            <div style="width:100%;">
                 <div class="task-row" style="border-left: 12px solid #fdcb6e;">
-                    <span class="word-task">4. <b>С</b>дача (перед Д)</span>
-                    <button class="check-btn" onclick="toggleAnswer(this, 'lvl1-4')">Проверить</button>
+                    <span class="word-task">3. О<b>т</b>бор</span>
+                    <button class="check-btn" onclick="toggleAnswer(this, 'lvl2-3')">Проверить</button>
                 </div>
-                <div id="lvl1-4" class="answer-box" style="border-color: #fdcb6e; background: #fff8e1;">
-                    Озвончение: слышим <b>[з]</b>.
+                <div id="lvl2-3" class="answer-box" style="border-color: #fdcb6e; background: #fff8e1;">
+                    Слышим [Д]. Перед звонким 'Б'.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="slide">
+        <div class="level-badge" style="background: #6c5ce7;">Уровень 3: Профи</div>
+        <h2>Найди подвох! 🧐</h2>
+        <div class="instruction-text">👇 Где звук меняется, а где нет?</div>
+
+        <div class="task-container">
+            <div style="width:100%;">
+                <div class="task-row" style="border-left: 12px solid #6c5ce7;">
+                    <span class="word-task">1. Пруд / Прут</span>
+                    <button class="check-btn" onclick="toggleAnswer(this, 'lvl3-1')">Ответ</button>
+                </div>
+                <div id="lvl3-1" class="answer-box" style="border-color: #6c5ce7; background: #f3e5f5;">
+                    <span style="color:#d63031;">Одинаково!</span> [Прут].<br>
+                    "Пруд" оглушается -> [т].
+                </div>
+            </div>
+            <div style="width:100%;">
+                <div class="task-row" style="border-left: 12px solid #6c5ce7;">
+                    <span class="word-task">2. Слойка (перед Л)</span>
+                    <button class="check-btn" onclick="toggleAnswer(this, 'lvl3-2')">Ответ</button>
+                </div>
+                <div id="lvl3-2" class="answer-box" style="border-color: #6c5ce7; background: #f3e5f5;">
+                    <span style="color:#00b894;">Без изменений!</span> [Слойка].<br>
+                    Перед сонорными озвончения нет.
+                </div>
+            </div>
+            <div style="width:100%;">
+                <div class="task-row" style="border-left: 12px solid #6c5ce7;">
+                    <span class="word-task">3. Твой (перед В)</span>
+                    <button class="check-btn" onclick="toggleAnswer(this, 'lvl3-3')">Ответ</button>
+                </div>
+                <div id="lvl3-3" class="answer-box" style="border-color: #6c5ce7; background: #f3e5f5;">
+                    <span style="color:#00b894;">Без изменений!</span> [Твой].<br>
+                    Перед буквой 'В' глухие не озвончаются.
                 </div>
             </div>
         </div>
@@ -364,37 +457,6 @@
     </div>
 
     <div class="slide">
-        <div class="level-badge" style="background: #a55eea;">Задание 31</div>
-        <h2>Работа с текстом</h2>
-        <div class="instruction-text">Найдите слово с [Й] перед гласной 👇</div>
-
-        <div class="quote-box" style="border-left: 10px solid #a55eea;">
-            "Выпишите слова из текста «Мудрость в управлении отношениями», в которых происходит озвончение."
-        </div>
-
-        <div class="task-container">
-            <div style="width:100%;">
-                <div class="task-row" style="border-left: 12px solid #a55eea;">
-                    <span class="word-task">Схема: в начале слова</span>
-                    <button class="check-btn" onclick="toggleAnswer(this, 'lvl2-1')">Пример</button>
-                </div>
-                <div id="lvl2-1" class="answer-box" style="border-color: #a55eea; background: #f3e5f5;">
-                    <b>Юла</b> — [й'у]ла.
-                </div>
-            </div>
-            <div style="width:100%;">
-                <div class="task-row" style="border-left: 12px solid #a55eea;">
-                    <span class="word-task">Схема: после Ь</span>
-                    <button class="check-btn" onclick="toggleAnswer(this, 'lvl2-2')">Пример</button>
-                </div>
-                <div id="lvl2-2" class="answer-box" style="border-color: #a55eea; background: #f3e5f5;">
-                    <b>Вьюга</b> — [в'й'уга].
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="slide">
         <h2>Мягкий знак (Ь)</h2>
         <p style="text-align: center;">Для чего он нужен?</p>
 
@@ -421,36 +483,46 @@
     </div>
 
     <div class="slide">
-        <div class="level-badge" style="background: #e84393;">Задание 36</div>
-        <h2>Орфограммы Ь</h2>
-        <div class="instruction-text">Как пишется слово? 👇</div>
+        <div class="level-badge" style="background: #0984e3;">Работа с текстом</div>
+        <h2>Внимательность</h2>
+        <div class="instruction-text">Найди слово с оглушением 👇</div>
+        
+        <div class="quote-box" style="border-left: 10px solid #0984e3;">
+            "Я увидел ласточек, суетящихся у разоренного <b>вчерашней</b> грозой гнезда."
+        </div>
 
         <div class="task-container">
             <div style="width:100%;">
-                <div class="task-row" style="border-left: 12px solid #e84393;">
-                    <span class="word-task">Пал...чик</span>
-                    <button class="check-btn" onclick="toggleAnswer(this, 'lvl3-1')">Проверить</button>
+                <div class="task-row" style="border-left: 12px solid #0984e3;">
+                    <span class="word-task">Какое слово нужно выписать?</span>
+                    <button class="check-btn" onclick="toggleAnswer(this, 'lvl4-1')">Показать</button>
                 </div>
-                <div id="lvl3-1" class="answer-box" style="border-color: #e84393; background: #fce4ec;">
-                    Пальчик (Л — мягкий).
-                </div>
-            </div>
-            <div style="width:100%;">
-                <div class="task-row" style="border-left: 12px solid #e84393;">
-                    <span class="word-task">Сердеч...ный</span>
-                    <button class="check-btn" onclick="toggleAnswer(this, 'lvl3-2')">Проверить</button>
-                </div>
-                <div id="lvl3-2" class="answer-box" style="border-color: #e84393; background: #fce4ec;">
-                    Серде<b>чн</b>ый (без Ь! ЧК, ЧН пишем без мягкого знака).
+                <div id="lvl4-1" class="answer-box">
+                    Ответ: <b>Вчерашней</b>.<br>
+                    "В" стоит перед глухим "Ч" -> слышим [Ф].
                 </div>
             </div>
+        </div>
+    </div>
+
+    <div class="slide">
+        <div class="level-badge" style="background: #fdcb6e; color: #d35400;">Сложно!</div>
+        <h2>Все звуки звонкие 🔔</h2>
+        <div class="instruction-text">Найди слово, где ВСЕ звуки звонкие 👇</div>
+
+        <div class="quote-box" style="border-left: 10px solid #fdcb6e; background: #fff3cd;">
+            "Часы на стене пробили десять ударов и замерли."
+        </div>
+
+        <div class="task-container">
             <div style="width:100%;">
-                <div class="task-row" style="border-left: 12px solid #e84393;">
-                    <span class="word-task">Бан...щик</span>
-                    <button class="check-btn" onclick="toggleAnswer(this, 'lvl3-3')">Проверить</button>
+                <div class="task-row" style="border-left: 12px solid #fdcb6e;">
+                    <span class="word-task">Какое это слово?</span>
+                    <button class="check-btn" onclick="toggleAnswer(this, 'lvl5-1')">Показать</button>
                 </div>
-                <div id="lvl3-3" class="answer-box" style="border-color: #e84393; background: #fce4ec;">
-                    Ба<b>нщ</b>ик (НЩ пишем без мягкого знака).
+                <div id="lvl5-1" class="answer-box" style="border-color: #fdcb6e; background: #fff8e1;">
+                    Ответ: <b>Замерли</b>.<br>
+                    [З], [М'], [Р], [Л'] — все звонкие.
                 </div>
             </div>
         </div>
@@ -459,8 +531,8 @@
     <div class="slide" style="justify-content: center;">
         <div style="font-size: 8rem; animation: spin 10s infinite linear;">🏆</div>
         <div style="font-size: 3rem; margin: 20px 0;">⭐⭐⭐⭐⭐</div>
-        <h1 style="color: #f1c40f;">ОТЛИЧНО!</h1>
-        <p style="text-align: center; font-size: 2rem;">Ты повторил темы!</p>
+        <h1 style="color: #f1c40f;">МОЛОДЕЦ!</h1>
+        <p style="text-align: center; font-size: 2rem;">Ты отлично справился со всеми заданиями!</p>
         <div style="font-size: 5rem; margin-top: 30px;">🎉</div>
         <style>@keyframes spin { 100% { transform: rotate(360deg); } }</style>
     </div>
@@ -470,7 +542,7 @@
         <button class="nav-btn" onclick="changeSlide(1)">❯</button>
     </div>
     
-    <div class="slide-counter" id="slideCounter">1 / 8</div>
+    <div class="slide-counter" id="slideCounter">1 / 11</div>
 
 </div>
 
